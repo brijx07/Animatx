@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AnimatX – Different People, Same Vision</title>
+<style>
+:root{color-scheme:dark;--bg:#09090e;--pn:rgba(255,255,255,.05);--bd:rgba(255,255,255,.1);--tx:#ececf4;--mu:#9a9ab0;--p:#8b5cf6;--b:#3b82f6;--ok:#34d399;--no:#f87171;--wa:#fbbf24;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html,body{margin:0}body{background:radial-gradient(900px 500px at 10% -10%,#2a1b5c55,transparent),radial-gradient(800px 500px at 100% 0,#13307a44,transparent),var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,Segoe UI,sans-serif;min-height:100vh}
+h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.01em}h2{font-size:22px}h3{font-size:16px}p{margin:0}
+.grad{background:linear-gradient(90deg,#a78bfa,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+.side{border-right:1px solid var(--bd);padding:20px 14px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px;background:#0c0c12cc;backdrop-filter:blur(14px)}
+.logo{font-size:22px;font-weight:800;padding:0 10px 16px}
+.nav{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;color:var(--mu);cursor:pointer;border:0;background:none;font:inherit;text-align:left;transition:.2s}
+.nav:hover{background:var(--pn);color:var(--tx)}.nav.on{background:linear-gradient(90deg,#8b5cf633,#3b82f622);color:#fff;box-shadow:inset 2px 0 var(--p)}
+.main{padding:24px;min-width:0;max-width:1200px;width:100%;animation:in .35s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:16px;padding:18px;backdrop-filter:blur(16px);transition:.25s}
+.card.hv:hover{transform:translateY(-3px);border-color:#8b5cf688;box-shadow:0 10px 30px #8b5cf622}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stat b{font-size:28px;display:block}.stat span{color:var(--mu);font-size:13px}
+.btn{background:linear-gradient(135deg,var(--p),var(--b));color:#fff;border:0;border-radius:10px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}.btn.gh{background:var(--pn);border:1px solid var(--bd)}.btn.ok{background:#10b98133;color:var(--ok)}.btn.no{background:#ef444433;color:var(--no)}.btn.sm{padding:5px 11px;font-size:13px}
+input,select,textarea{width:100%;background:#0006;border:1px solid var(--bd);border-radius:10px;padding:10px 12px;color:var(--tx);font:inherit;outline:0}
+input:focus,select:focus,textarea:focus{border-color:var(--p);box-shadow:0 0 0 3px #8b5cf633}
+label{display:block;font-size:13px;color:var(--mu);margin:12px 0 5px}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;background:#8b5cf622;color:#c4b5fd;margin:2px 3px 2px 0}
+.tag.ok{background:#10b98122;color:var(--ok)}.tag.no{background:#ef444422;color:var(--no)}.tag.wa{background:#fbbf2422;color:var(--wa)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{flex:1}.mu{color:var(--mu);font-size:13px}.mt{margin-top:12px}
+.av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;background:linear-gradient(135deg,var(--p),var(--b));flex:none}
+.prog{height:8px;background:#fff1;border-radius:9px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--b));transition:.5s}
+.bars{display:flex;gap:10px;align-items:flex-end;height:150px;padding-top:8px}.bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px}
+.bar i{width:100%;max-width:38px;border-radius:6px 6px 0 0;background:linear-gradient(var(--p),var(--b));min-height:3px;transition:.6s}.bar b{font-weight:400;color:var(--mu);font-size:11px;margin-top:4px;text-align:center}
+.modal{position:fixed;inset:0;background:#000a;display:grid;place-items:center;padding:16px;z-index:50;backdrop-filter:blur(4px)}
+.modal .card{width:100%;max-width:560px;max-height:90vh;overflow:auto;background:#14141d}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1c1c2a;border:1px solid var(--p);padding:10px 18px;border-radius:12px;z-index:99;animation:in .3s}
+.chat{display:flex;flex-direction:column;height:420px}.msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:4px}
+.m{max-width:78%;padding:8px 12px;border-radius:12px;background:#ffffff10}.m.me{align-self:flex-end;background:linear-gradient(135deg,#8b5cf6aa,#3b82f6aa)}
+.auth{min-height:100vh;display:grid;place-items:center;padding:16px}.auth .card{width:100%;max-width:420px}
+.dot{background:var(--no);color:#fff;border-radius:99px;font-size:11px;padding:0 6px;margin-left:auto}
+.chk{display:flex;flex-wrap:wrap;gap:8px}.chk span{padding:5px 12px;border:1px solid var(--bd);border-radius:99px;cursor:pointer;font-size:13px}.chk span.on{background:#8b5cf633;border-color:var(--p)}
+.sc{overflow-x:auto}
+@media(max-width:800px){.app{grid-template-columns:1fr}.side{position:fixed;bottom:0;left:0;right:0;top:auto;height:auto;flex-direction:row;overflow-x:auto;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:40;border-top:1px solid var(--bd);border-right:0}.logo,.nav small{display:none}.nav{flex-direction:column;gap:2px;font-size:11px;padding:6px 10px}.main{padding:16px 14px 90px}}
+</style></head><body><div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script type="text/babel">
+const {useState,useEffect,useRef}=React;
+/* ---------- Data layer: swap these for Flask/Node + MongoDB REST calls ---------- */
+const ROLES=["Filmmaker","Animator","Scriptwriter","Voice Artist","Sketch Artist","Video Editor"],GENRES=["Sci-Fi","Fantasy","Drama","Horror","Documentary","Comedy"];
+const D=864e5,uid=()=>Math.random().toString(36).slice(2,9),KEY="animatx_db_v1",SKEY="animatx_session";
+const ago=t=>{const s=(Date.now()-t)/1e3;return s<60?"now":s<3600?Math.floor(s/60)+"m":s<86400?Math.floor(s/3600)+"h":Math.floor(s/86400)+"d"};
+function seed(){const n=Date.now(),U=(id,name,email,type,role,skills,bio)=>({id,name,email,pw:"demo123",type,role,skills,bio,exp:"",links:[]});
+const users=[U("d1","Maya Rao","director@animatx.io","Director","Filmmaker",[],"Award-winning director of dark animated fantasy."),U("d2","Arjun Mehta","arjun@animatx.io","Director","Filmmaker",[],"Indie sci-fi storyteller."),
+U("c1","Ishaan Verma","contributor@animatx.io","Contributor","Animator",["2D Animation","Blender","Rigging"],"Animator with 5 years in short-form film."),U("c2","Zoya Khan","zoya@animatx.io","Contributor","Voice Artist",["Narration","Character Voices"],"Versatile voice actor."),
+U("c3","Kabir Singh","kabir@animatx.io","Contributor","Scriptwriter",["Screenplay","Worldbuilding"],"Writes mythic tales."),U("c4","Nina Das","nina@animatx.io","Contributor","Video Editor",["Premiere","Color Grading"],"Cinematic editor.")];
+users[2].links=["https://behance.net/ishaan"];users[2].exp="5 years, 12 shorts, 2 festival selections";
+const T=a=>a.map(([t,done])=>({id:uid(),t,done}));
+const P=(id,o,title,genre,mood,roles,status,team,tasks,desc)=>({id,ownerId:o,title,genre,mood,roles,status,team,tasks:T(tasks),desc,story:desc+" A journey of loss, light and the cost of vision.",created:n-D*(10+id.length)});
+const projects=[P("p1","d1","The Lost Kingdom","Fantasy","Epic, brooding",["Animator","Voice Artist","Scriptwriter"],"In Production",["c1","c3"],[["Script lock",1],["Character rigs",1],["Scene 1-4 animatic",0],["Voice recording",0]],"A 3D animated tale of a fallen realm."),
+P("p2","d1","Neon Requiem","Sci-Fi","Cyberpunk, melancholic",["Sketch Artist","Video Editor"],"Open",[],[["Moodboard",1],["Storyboard",0]],"A rain-soaked noir about a memory thief."),
+P("p3","d2","Hollow Hours","Horror","Dread, quiet",["Voice Artist","Animator","Scriptwriter"],"Open",["c2"],[["Treatment",1],["Script draft",0]],"A night-shift worker hears the clocks whisper."),
+P("p4","d2","Monsoon Letters","Drama","Warm, nostalgic",["Video Editor","Filmmaker"],"Completed",["c4","c2"],[["Shoot",1],["Edit",1],["Grade",1]],"Letters across decades in rural India."),
+P("p5","d1","Paper Gods","Documentary","Curious, intimate",["Sketch Artist","Scriptwriter"],"Open",[],[["Interviews",0]],"Artists who keep folk deities alive.")];
+projects[0].created=n-D*20;
+const A=(p,u,r,s,t)=>({id:uid(),projectId:p,userId:u,role:r,note:"Excited to contribute to this vision.",status:s,created:n-D*t});
+const apps=[A("p1","c1","Animator","Accepted",12),A("p1","c3","Scriptwriter","Accepted",14),A("p2","c4","Video Editor","Pending",2),A("p2","c1","Sketch Artist","Pending",1),A("p3","c2","Voice Artist","Accepted",6),A("p5","c3","Scriptwriter","Rejected",5),A("p4","c4","Video Editor","Accepted",30)];
+const M=(p,u,t,d)=>({id:uid(),projectId:p,userId:u,text:t,t:n-D*d});
+const messages=[M("p1","d1","Welcome team! Kickoff notes are in the workspace.",6),M("p1","c1","Rigs for the king are done. Uploading previews.",5),M("p1","c3","Act 2 dialogue revised.",3),M("p1","d1","Great work, let us review Friday.",1),M("p3","d2","Zoya, can you send a test take?",2),M("p3","c2","Sending tonight.",1)];
+const notifs=[{id:uid(),userId:"d1",text:"Nina Das applied to Neon Requiem",t:n-D*2,read:false},{id:uid(),userId:"c1",text:"Your application to The Lost Kingdom was accepted",t:n-D*12,read:true},{id:uid(),userId:"c1",text:"Maya Rao posted in The Lost Kingdom",t:n-D,read:false}];
+return {users,projects,apps,messages,notifs}}
+const load=()=>{try{const s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return seed()};
+const save=d=>{try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}};
+/* ---------- UI bits ---------- */
+const ini=n=>n.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
+const Av=({u})=><div className="av" title={u.name}>{ini(u.name)}</div>;
+const Bars=({data})=>{const m=Math.max(1,...data.map(d=>d[1]));return <div className="bars">{data.map(([k,v])=><div key={k} className="bar"><span>{v}</span><i style={{height:v/m*100+"%"}}/><b>{k}</b></div>)}</div>};
+const Spark=({v})=>{const m=Math.max(1,...v),pts=v.map((x,i)=>`${i*(300/(v.length-1))},${60-x/m*52}`).join(" ");return <svg viewBox="0 0 300 64" width="100%" height="80"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#8b5cf6"/><stop offset="1" stopColor="#3b82f6"/></linearGradient></defs><polyline points={pts} fill="none" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"/></svg>};
+const Modal=({children,close})=><div className="modal" onClick={close}><div className="card" onClick={e=>e.stopPropagation()}>{children}</div></div>;
+const stTag=s=>s==="Accepted"||s==="Completed"||s==="Open"?"ok":s==="Rejected"?"no":"wa";
+/* ---------- Auth ---------- */
+function Auth({db,onLogin,mut,say}){
+ const [mode,setMode]=useState("login"),[f,setF]=useState({name:"",email:"",pw:"",type:"Contributor"}),[err,setErr]=useState("");
+ const set=k=>e=>setF({...f,[k]:e.target.value});
+ const go=e=>{e.preventDefault();const em=f.email.trim().toLowerCase();
+  if(!/^\S+@\S+\.\S+$/.test(em))return setErr("Enter a valid email address.");
+  if(f.pw.length<6)return setErr("Password must be at least 6 characters.");
+  if(mode==="login"){const u=db.users.find(u=>u.email===em&&u.pw===f.pw);return u?onLogin(u.id):setErr("Incorrect email or password.")}
+  if(f.name.trim().length<2)return setErr("Please enter your name.");
+  if(db.users.some(u=>u.email===em))return setErr("An account with this email already exists.");
+  const id=uid();mut(d=>{d.users.push({id,name:f.name.trim(),email:em,pw:f.pw,type:f.type,role:f.type==="Director"?"Filmmaker":"Animator",skills:[],bio:"",exp:"",links:[]})});onLogin(id)};
+ return <div className="auth"><form className="card" onSubmit={go}>
+  <h1 className="grad" style={{fontSize:32}}>AnimatX</h1><p className="mu">Different People, Same Vision</p>
+  <div className="row mt">{["login","signup"].map(m=><button type="button" key={m} className={"btn sm "+(mode===m?"":"gh")} onClick={()=>{setMode(m);setErr("")}}>{m==="login"?"Log in":"Sign up"}</button>)}</div>
+  {mode==="signup"&&<><label>Full name</label><input value={f.name} onChange={set("name")}/><label>Account type</label><select value={f.type} onChange={set("type")}><option>Contributor</option><option>Director</option></select></>}
+  <label>Email</label><input value={f.email} onChange={set("email")} autoComplete="email"/><label>Password</label><input type="password" value={f.pw} onChange={set("pw")} autoComplete="current-password"/>
+  {err&&<p className="tag no mt">{err}</p>}
+  <button className="btn mt" style={{width:"100%"}}>{mode==="login"?"Enter the studio":"Create account"}</button>
+  {mode==="login"&&<div className="mu mt">Demo: <a href="#" onClick={e=>{e.preventDefault();setF({...f,email:"director@animatx.io",pw:"demo123"})}} style={{color:"#a78bfa"}}>Director</a> · <a href="#" onClick={e=>{e.preventDefault();setF({...f,email:"contributor@animatx.io",pw:"demo123"})}} style={{color:"#a78bfa"}}>Contributor</a></div>}
+ </form></div>}
+/* ---------- Pages ---------- */
+function Dash({db,me}){
+ const P=db.projects,A=db.apps,acc=A.filter(a=>a.status==="Accepted").length,conv=A.length?Math.round(acc/A.length*100):0;
+ const days=[...Array(7)].map((_,i)=>db.messages.filter(m=>Math.floor((Date.now()-m.t)/D)===6-i).length);
+ const eng=db.users.filter(u=>u.type==="Contributor").map(u=>[u.name.split(" ")[0],db.messages.filter(m=>m.userId===u.id).length+P.reduce((s,p)=>s+(p.team.includes(u.id)?p.tasks.filter(t=>t.done).length:0),0)]);
+ const stats=[["Total projects",P.length],["Active contributors",new Set(P.flatMap(p=>p.team)).size],["Applications",A.length],["Completed",P.filter(p=>p.status==="Completed").length]];
+ const mine=me.type==="Director"?P.filter(p=>p.ownerId===me.id):P.filter(p=>p.team.includes(me.id));
+ return <><div className="top"><div><h2>Welcome back, <span className="grad">{me.name.split(" ")[0]}</span></h2><p className="mu">{me.type} dashboard · platform analytics</p></div></div>
+ <div className="grid">{stats.map(([k,v])=><div key={k} className="card stat"><b className="grad">{v}</b><span>{k}</span></div>)}</div>
+ <div className="grid g2 mt">
+  <div className="card"><h3>Projects by genre</h3><Bars data={GENRES.map(g=>[g,P.filter(p=>p.genre===g).length])}/></div>
+  <div className="card"><h3>Application conversion</h3><p className="stat"><b className="grad">{conv}%</b><span>accepted of {A.length} applications</span></p>
+   <div className="mt">{["Pending","Accepted","Rejected"].map(s=>{const c=A.filter(a=>a.status===s).length;return <div key={s} className="mt"><div className="row"><span className="mu">{s}</span><span className="sp"/><span>{c}</span></div><div className="prog"><i style={{width:(A.length?c/A.length*100:0)+"%"}}/></div></div>})}</div></div>
+  <div className="card"><h3>Team activity (7 days)</h3><Spark v={days}/><p className="mu">{days.reduce((a,b)=>a+b,0)} messages this week</p></div>
+  <div className="card"><h3>Contributor engagement</h3><Bars data={eng}/></div>
+ </div>
+ <h3 className="mt" style={{marginTop:24}}>{me.type==="Director"?"Your projects":"Ongoing projects"}</h3>
+ <div className="grid mt">{mine.length?mine.map(p=><div key={p.id} className="card"><div className="row"><b>{p.title}</b><span className="sp"/><span className={"tag "+stTag(p.status)}>{p.status}</span></div><div className="prog mt"><i style={{width:p.tasks.length?p.tasks.filter(t=>t.done).length/p.tasks.length*100+"%":0}}/></div></div>):<p className="mu">Nothing here yet.</p>}</div></>}
+function Apply({p,me,mut,say,close}){
+ const [role,setRole]=useState(p.roles[0]),[note,setNote]=useState("");
+ const go=()=>{if(note.trim().length<10)return say("Add a short note (10+ characters).");
+  mut(d=>{d.apps.push({id:uid(),projectId:p.id,userId:me.id,role,note:note.trim(),status:"Pending",created:Date.now()});d.notifs.push({id:uid(),userId:p.ownerId,text:`${me.name} applied to ${p.title}`,t:Date.now(),read:false})});say("Application sent!");close()};
+ return <Modal close={close}><h3>Apply to {p.title}</h3><label>Role</label><select value={role} onChange={e=>setRole(e.target.value)}>{p.roles.map(r=><option key={r}>{r}</option>)}</select><label>Why you?</label><textarea rows="4" value={note} onChange={e=>setNote(e.target.value)}/><div className="row mt"><button className="btn" onClick={go}>Send application</button><button className="btn gh" onClick={close}>Cancel</button></div></Modal>}
+function Discover({db,me,mut,say}){
+ const [q,setQ]=useState(""),[g,setG]=useState(""),[r,setR]=useState(""),[ap,setAp]=useState(null),[det,setDet]=useState(null);
+ const list=db.projects.filter(p=>p.status==="Open"&&(!g||p.genre===g)&&(!r||p.roles.includes(r))&&(p.title+p.desc+p.mood).toLowerCase().includes(q.toLowerCase()));
+ const owner=p=>db.users.find(u=>u.id===p.ownerId);
+ return <><div className="top"><h2>Discover projects</h2></div>
+ <div className="grid g2"><input placeholder="Search title, mood, story…" value={q} onChange={e=>setQ(e.target.value)}/><div className="row"><select style={{flex:1}} value={g} onChange={e=>setG(e.target.value)}><option value="">All genres</option>{GENRES.map(x=><option key={x}>{x}</option>)}</select><select style={{flex:1}} value={r} onChange={e=>setR(e.target.value)}><option value="">All skills</option>{ROLES.map(x=><option key={x}>{x}</option>)}</select></div></div>
+ <div className="grid mt">{list.map(p=>{const applied=db.apps.some(a=>a.projectId===p.id&&a.userId===me.id);return <div key={p.id} className="card hv"><div className="row"><span className="tag">{p.genre}</span><span className="mu">{p.mood}</span></div><h3 className="mt">{p.title}</h3><p className="mu mt">{p.desc}</p><div className="mt">{p.roles.map(x=><span key={x} className="tag wa">{x}</span>)}</div><div className="row mt"><span className="mu">by {owner(p)?.name}</span><span className="sp"/><button className="btn gh sm" onClick={()=>setDet(p)}>Details</button>{me.type==="Contributor"&&<button className="btn sm" disabled={applied} onClick={()=>setAp(p)}>{applied?"Applied":"Apply"}</button>}</div></div>})}{!list.length&&<p className="mu">No projects match your filters.</p>}</div>
+ {ap&&<Apply p={ap} me={me} mut={mut} say={say} close={()=>setAp(null)}/>}
+ {det&&<Modal close={()=>setDet(null)}><h3>{det.title}</h3><p className="mu mt">{det.story}</p><div className="mt"><span className="tag">{det.genre}</span><span className="tag">{det.mood}</span></div><button className="btn gh mt" onClick={()=>setDet(null)}>Close</button></Modal>}</>}
+function NewProject({me,mut,say,close}){
+ const [f,setF]=useState({title:"",desc:"",story:"",genre:GENRES[0],mood:"",roles:[]}),set=k=>e=>setF({...f,[k]:e.target.value});
+ const go=pub=>{if(f.title.trim().length<3||f.desc.trim().length<10||!f.roles.length)return say("Title, description and at least one role are required.");
+  mut(d=>{d.projects.push({id:uid(),ownerId:me.id,...f,title:f.title.trim(),status:pub?"Open":"Draft",team:[],tasks:[],created:Date.now()})});say(pub?"Project published":"Saved as draft");close()};
+ return <Modal close={close}><h3>New project</h3><label>Title</label><input value={f.title} onChange={set("title")}/><label>Description</label><input value={f.desc} onChange={set("desc")}/><label>Story</label><textarea rows="3" value={f.story} onChange={set("story")}/>
+ <div className="grid g2"><div><label>Genre</label><select value={f.genre} onChange={set("genre")}>{GENRES.map(g=><option key={g}>{g}</option>)}</select></div><div><label>Mood</label><input value={f.mood} onChange={set("mood")}/></div></div>
+ <label>Required roles</label><div className="chk">{ROLES.map(r=><span key={r} className={f.roles.includes(r)?"on":""} onClick={()=>setF({...f,roles:f.roles.includes(r)?f.roles.filter(x=>x!==r):[...f.roles,r]})}>{r}</span>)}</div>
+ <div className="row mt"><button className="btn" onClick={()=>go(true)}>Publish</button><button className="btn gh" onClick={()=>go(false)}>Save draft</button></div></Modal>}
+function Projects({db,me,mut,say}){
+ const [nw,setNw]=useState(false),dir=me.type==="Director",list=dir?db.projects.filter(p=>p.ownerId===me.id):db.projects.filter(p=>p.team.includes(me.id));
+ const setSt=(id,s)=>mut(d=>{d.projects.find(p=>p.id===id).status=s});
+ return <><div className="top"><h2>{dir?"My projects":"Ongoing projects"}</h2>{dir&&<button className="btn" onClick={()=>setNw(true)}>+ New project</button>}</div>
+ <div className="grid">{list.map(p=>{const pr=p.tasks.length?Math.round(p.tasks.filter(t=>t.done).length/p.tasks.length*100):0;return <div key={p.id} className="card"><div className="row"><b>{p.title}</b><span className="sp"/><span className={"tag "+stTag(p.status)}>{p.status}</span></div><p className="mu mt">{p.desc}</p><div className="prog mt"><i style={{width:pr+"%"}}/></div><div className="mu">{pr}% · team of {p.team.length}</div><div className="row mt">{p.team.map(id=>{const u=db.users.find(x=>x.id===id);return u&&<Av key={id} u={u}/>})}</div>
+ {dir&&<select className="mt" value={p.status} onChange={e=>setSt(p.id,e.target.value)}>{["Draft","Open","In Production","Completed"].map(s=><option key={s}>{s}</option>)}</select>}</div>})}{!list.length&&<p className="mu">{dir?"Create your first project.":"Apply to projects to join a team."}</p>}</div>
+ {nw&&<NewProject me={me} mut={mut} say={say} close={()=>setNw(false)}/>}</>}
+function Apps({db,me,mut,say}){
+ const dir=me.type==="Director",pj=id=>db.projects.find(p=>p.id===id),us=id=>db.users.find(u=>u.id===id);
+ const list=db.apps.filter(a=>dir?pj(a.projectId)?.ownerId===me.id:a.userId===me.id).sort((a,b)=>b.created-a.created);
+ const dec=(a,s)=>mut(d=>{const x=d.apps.find(y=>y.id===a.id);x.status=s;const p=d.projects.find(p=>p.id===a.projectId);
+  if(s==="Accepted"&&!p.team.includes(a.userId))p.team.push(a.userId);d.notifs.push({id:uid(),userId:a.userId,text:`Your application to ${p.title} was ${s.toLowerCase()}`,t:Date.now(),read:false})});
+ return <><div className="top"><h2>{dir?"Applications received":"My applications"}</h2></div><div className="grid">{list.map(a=>{const u=us(a.userId);return <div key={a.id} className="card"><div className="row">{dir&&<Av u={u}/>}<div><b>{dir?u.name:pj(a.projectId).title}</b><div className="mu">{dir?`${a.role} · ${pj(a.projectId).title}`:a.role}</div></div><span className="sp"/><span className={"tag "+stTag(a.status)}>{a.status}</span></div><p className="mu mt">“{a.note}”</p>{dir&&<div className="mt">{u.skills.map(s=><span key={s} className="tag">{s}</span>)}</div>}{dir&&a.status==="Pending"&&<div className="row mt"><button className="btn ok sm" onClick={()=>dec(a,"Accepted")}>Accept</button><button className="btn no sm" onClick={()=>dec(a,"Rejected")}>Reject</button></div>}<div className="mu mt">{ago(a.created)} ago</div></div>})}{!list.length&&<p className="mu">No applications yet.</p>}</div></>}
+function Workspace({db,me,mut}){
+ const mine=db.projects.filter(p=>p.ownerId===me.id||p.team.includes(me.id)),[sel,setSel]=useState(mine[0]?.id),[t,setT]=useState("");
+ const p=mine.find(x=>x.id===sel)||mine[0];if(!p)return <><div className="top"><h2>Workspace</h2></div><p className="mu">Join or create a project to unlock its workspace.</p></>;
+ const tog=id=>mut(d=>{const k=d.projects.find(x=>x.id===p.id).tasks.find(x=>x.id===id);k.done=!k.done});
+ const add=()=>{if(!t.trim())return;mut(d=>{d.projects.find(x=>x.id===p.id).tasks.push({id:uid(),t:t.trim(),done:0})});setT("")};
+ const pr=p.tasks.length?Math.round(p.tasks.filter(x=>x.done).length/p.tasks.length*100):0;
+ return <><div className="top"><h2>Team workspace</h2><select style={{width:220}} value={p.id} onChange={e=>setSel(e.target.value)}>{mine.map(x=><option key={x.id} value={x.id}>{x.title}</option>)}</select></div>
+ <div className="grid g2"><div className="card"><h3>Progress · {pr}%</h3><div className="prog mt"><i style={{width:pr+"%"}}/></div><div className="mt">{p.tasks.map(k=><label key={k.id} className="row" style={{color:"var(--tx)",margin:"8px 0",cursor:"pointer"}}><input type="checkbox" style={{width:18}} checked={!!k.done} onChange={()=>tog(k.id)}/><span style={{textDecoration:k.done?"line-through":"none",opacity:k.done?.6:1}}>{k.t}</span></label>)}</div><div className="row mt"><input placeholder="Add a task" value={t} onChange={e=>setT(e.target.value)} onKeyDown={e=>e.key==="Enter"&&add()} style={{flex:1}}/><button className="btn sm" onClick={add}>Add</button></div></div>
+ <div className="card"><h3>Team</h3>{[p.ownerId,...p.team].map(id=>{const u=db.users.find(x=>x.id===id);return u&&<div key={id} className="row mt"><Av u={u}/><div><b>{u.name}</b><div className="mu">{id===p.ownerId?"Director":u.role}</div></div></div>})}</div></div></>}
+function Messages({db,me,mut}){
+ const mine=db.projects.filter(p=>p.ownerId===me.id||p.team.includes(me.id)),[sel,setSel]=useState(mine[0]?.id),[t,setT]=useState(""),end=useRef();
+ const p=mine.find(x=>x.id===sel)||mine[0],ms=p?db.messages.filter(m=>m.projectId===p.id).sort((a,b)=>a.t-b.t):[];
+ useEffect(()=>{end.current&&end.current.scrollIntoView({block:"end"})},[ms.length,sel]);
+ if(!p)return <><div className="top"><h2>Messages</h2></div><p className="mu">No team channels yet.</p></>;
+ const send=()=>{if(!t.trim())return;const text=t.trim();setT("");mut(d=>{d.messages.push({id:uid(),projectId:p.id,userId:me.id,text,t:Date.now()})});
+  const other=[p.ownerId,...p.team].find(i=>i!==me.id);if(other)setTimeout(()=>mut(d=>{d.messages.push({id:uid(),projectId:p.id,userId:other,text:"Got it, thanks! Will update the board.",t:Date.now()})}),1600)};
+ return <><div className="top"><h2>Messages</h2></div><div className="grid" style={{gridTemplateColumns:"minmax(150px,220px) 1fr"}}>
+ <div className="card">{mine.map(x=><button key={x.id} className={"nav "+(x.id===p.id?"on":"")} style={{width:"100%"}} onClick={()=>setSel(x.id)}>{x.title}</button>)}</div>
+ <div className="card chat"><div className="msgs">{ms.map(m=>{const u=db.users.find(x=>x.id===m.userId);return <div key={m.id} className={"m "+(m.userId===me.id?"me":"")}><div className="mu" style={{color:"#ddd"}}>{u?.name} · {ago(m.t)}</div>{m.text}</div>})}<div ref={end}/></div>
+ <div className="row mt"><input style={{flex:1}} placeholder="Message the team…" value={t} onChange={e=>setT(e.target.value)} onKeyDown={e=>e.key==="Enter"&&send()}/><button className="btn" onClick={send}>Send</button></div></div></div></>}
+function Notifs({db,me,mut}){
+ const l=db.notifs.filter(n=>n.userId===me.id).sort((a,b)=>b.t-a.t);
+ return <><div className="top"><h2>Notifications</h2><button className="btn gh sm" onClick={()=>mut(d=>d.notifs.forEach(n=>{if(n.userId===me.id)n.read=true}))}>Mark all read</button></div>
+ <div className="grid" style={{gridTemplateColumns:"1fr"}}>{l.map(n=><div key={n.id} className="card row" style={{opacity:n.read?.6:1}}><span style={{width:8,height:8,borderRadius:9,background:n.read?"#555":"var(--p)"}}/><span>{n.text}</span><span className="sp"/><span className="mu">{ago(n.t)}</span></div>)}{!l.length&&<p className="mu">You are all caught up.</p>}</div></>}
+function Profile({me,mut,say}){
+ const [f,setF]=useState({name:me.name,role:me.role,bio:me.bio,exp:me.exp,skills:me.skills.join(", "),links:me.links}),[l,setL]=useState(""),set=k=>e=>setF({...f,[k]:e.target.value});
+ const addL=()=>{if(!/^https?:\/\/\S+\.\S+/.test(l))return say("Enter a valid URL starting with http(s)://");setF({...f,links:[...f.links,l]});setL("")};
+ const sv=()=>{if(f.name.trim().length<2)return say("Name is required.");mut(d=>{Object.assign(d.users.find(u=>u.id===me.id),{name:f.name.trim(),role:f.role,bio:f.bio,exp:f.exp,links:f.links,skills:f.skills.split(",").map(s=>s.trim()).filter(Boolean)})});say("Profile saved")};
+ return <><div className="top"><h2>{me.type==="Director"?"Profile":"Profile & portfolio"}</h2></div><div className="card" style={{maxWidth:640}}><div className="row"><Av u={me}/><div><b>{me.name}</b><div className="mu">{me.type} · {me.email}</div></div></div>
+ <label>Name</label><input value={f.name} onChange={set("name")}/><label>Primary role</label><select value={f.role} onChange={set("role")}>{ROLES.map(r=><option key={r}>{r}</option>)}</select><label>Bio</label><textarea rows="3" value={f.bio} onChange={set("bio")}/>
+ {me.type==="Contributor"&&<><label>Skills (comma separated)</label><input value={f.skills} onChange={set("skills")}/><label>Experience</label><input value={f.exp} onChange={set("exp")}/><label>Portfolio links</label>{f.links.map(x=><div key={x} className="row mt"><a href={x} target="_blank" rel="noreferrer" style={{color:"#a78bfa"}}>{x}</a><span className="sp"/><button className="btn no sm" onClick={()=>setF({...f,links:f.links.filter(y=>y!==x)})}>Remove</button></div>)}<div className="row mt"><input style={{flex:1}} placeholder="https://…" value={l} onChange={e=>setL(e.target.value)}/><button className="btn gh sm" onClick={addL}>Add</button></div></>}
+ <button className="btn mt" onClick={sv}>Save profile</button></div></>}
+/* ---------- Shell ---------- */
+function App(){
+ const [db,setDb]=useState(load),[sid,setSid]=useState(()=>{try{return localStorage.getItem(SKEY)}catch(e){return null}}),[page,setPage]=useState("dash"),[toast,setToast]=useState("");
+ useEffect(()=>{const h=e=>{if(e.key===KEY)setDb(load())};window.addEventListener("storage",h);return()=>window.removeEventListener("storage",h)},[]);
+ const mut=fn=>setDb(d=>{const n=JSON.parse(JSON.stringify(d));fn(n);save(n);return n});
+ const say=m=>{setToast(m);setTimeout(()=>setToast(""),2200)};
+ const login=id=>{try{localStorage.setItem(SKEY,id)}catch(e){}setSid(id);setPage("dash")};
+ const logout=()=>{try{localStorage.removeItem(SKEY)}catch(e){}setSid(null)};
+ const me=db.users.find(u=>u.id===sid);
+ if(!me)return <><Auth db={db} onLogin={login} mut={mut} say={say}/>{toast&&<div className="toast">{toast}</div>}</>;
+ const unread=db.notifs.filter(n=>n.userId===me.id&&!n.read).length,dir=me.type==="Director";
+ const nav=[["dash","▦","Dashboard"],["disc","✦","Discover"],["proj","▶",dir?"Projects":"My Projects"],["apps","✉","Applications"],["work","◧","Workspace"],["msg","✎","Messages"],["note","●","Alerts"],["prof","☺","Profile"]];
+ const V={dash:Dash,disc:Discover,proj:Projects,apps:Apps,work:Workspace,msg:Messages,note:Notifs,prof:Profile}[page];
+ return <div className="app"><aside className="side"><div className="logo grad">AnimatX</div>
+  {nav.map(([k,i,l])=><button key={k} className={"nav "+(page===k?"on":"")} onClick={()=>setPage(k)}><span>{i}</span><small>{l}</small>{k==="note"&&unread>0&&<span className="dot">{unread}</span>}</button>)}
+  <div className="sp"/><button className="nav" onClick={logout}><span>⏻</span><small>Log out</small></button></aside>
+  <main className="main" key={page}><V db={db} me={me} mut={mut} say={say}/></main>{toast&&<div className="toast">{toast}</div>}</div>}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script></body></html>
